@@ -39,7 +39,15 @@ multiplyButton.addEventListener('click', showMultiples);
 An Agreeable Form
 *************** */
 
-// Your Code Here
+const agreeButton = document.querySelector('#agreeable-form input[type="submit"]');
+
+function agreeWithUser(evt) {
+  evt.preventDefault();
+  const favoriteFood = document.querySelector('#agreeable-form input[type="text"]').value;
+  document.querySelector('#agreeable-text').innerText = `I like ${favoriteFood} too!`;
+}
+
+agreeButton.addEventListener('click', agreeWithUser);
 
 /** ****************
 Five colored primes
