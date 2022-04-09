@@ -3,19 +3,37 @@
 /** ********************
 Make an Event Handler
 ********************* */
-const button = document.querySelector("#popup-alert-button")
+const popupButton = document.querySelector("#popup-alert-button");
 
 function showAlert() {
   alert('Peek-a-boo!');
 }
 
-button.addEventListener('click', showAlert)
+popupButton.addEventListener('click', showAlert);
 
 /** ***********************
 Practice Your Times Tables
 ************************ */
+const multiplyButton = document.querySelector('#multiply-btn');
 
-// Your Code Here
+function showMultiples(evt) {
+  evt.preventDefault();
+
+  const multiples = [];
+
+  const divider = Number(document.querySelector('#mults-of').value);
+  const userNum = Number(document.querySelector('#max').value);
+
+  for (const num of Array(userNum + 1).keys()) {
+    if (num % divider === 0) {
+      multiples.push(num);
+    }
+  }
+
+  console.log(multiples);
+}
+
+multiplyButton.addEventListener('click', showMultiples);
 
 /** **************
 An Agreeable Form
