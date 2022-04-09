@@ -1,10 +1,15 @@
 'use strict';
 
 /** ********************
- Make an Event Handler
+Make an Event Handler
 ********************* */
+const button = document.querySelector("#popup-alert-button")
 
-// Your Code Here
+function showAlert() {
+  alert('Peek-a-boo!');
+}
+
+button.addEventListener('click', showAlert)
 
 /** ***********************
 Practice Your Times Tables
