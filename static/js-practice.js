@@ -53,41 +53,41 @@ agreeButton.addEventListener('click', agreeWithUser);
 Five colored primes
 ***************** */
 
-const PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
-const primeButton = document.querySelector('#make-prime-circles');
+// const PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
+// const primeButton = document.querySelector('#make-prime-circles');
 
-function showPrimeNumbers() {
-  evt.preventDefault();
-  const primeNumbers = [];
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+// function showPrimeNumbers() {
+//   evt.preventDefault();
+//   const primeNumbers = [];
+//   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-  for (const num of numbers) {
-    const dividers = [];
+//   for (const num of numbers) {
+//     const dividers = [];
 
-    if (num !== 1) {
-      for (const divider of numbers) {
-        if (num % divider === 0) {
-          if (divider !== 1 || divider !== num) {
-            dividers.push(divider);
-          }
-        }
-      }
-    }
+//     if (num !== 1) {
+//       for (const divider of numbers) {
+//         if (num % divider === 0) {
+//           if (divider !== 1 || divider !== num) {
+//             dividers.push(divider);
+//           }
+//         }
+//       }
+//     }
 
-    if (dividers.length < 3 && num !== 1) {
-      primeNumbers.push(num);
-    }
-  };
+//     if (dividers.length < 3 && num !== 1) {
+//       primeNumbers.push(num);
+//     }
+//   };
 
-  // primeNumbers[0].prime-circle.color = 'orange';
-  // primeNumbers[1].prime-circle.color = 'midnightblue';
-  // primeNumbers[2].prime-circle.color = 'darkgoldenrod';
-  // primeNumbers[3].prime-circle.color = 'green';
-  // primeNumbers[4].prime-circle.color = 'purple';
+//   // primeNumbers[0].prime-circle.color = 'orange';
+//   // primeNumbers[1].prime-circle.color = 'midnightblue';
+//   // primeNumbers[2].prime-circle.color = 'darkgoldenrod';
+//   // primeNumbers[3].prime-circle.color = 'green';
+//   // primeNumbers[4].prime-circle.color = 'purple';
 
-}
+// }
 
-primeButton.addEventListener('click', showPrimeNumbers)
+// primeButton.addEventListener('click', showPrimeNumbers)
 
 /** *********
 Got Puppies?
@@ -104,4 +104,15 @@ function showPuppies(results) {
   puppyDiv.insertAdjacentHTML('beforeend', `<img src=${puppyURL} alt="puppy-image">`);
 }
 
-// Your Code Here
+const puppyButton = document.querySelector('#puppy-form')
+
+function numberOfPuppies(evt) {
+  evt.preventDefault();
+  const puppyNum = document.querySelector('#num-puppies').value;
+
+  fetch(`/puppies.json?num-puppies=${puppyNum}`)
+  .then(response => response.json())
+  .then(responseData => {showPuppies(responseData)});
+}
+
+puppyButton.addEventListener('submit', numberOfPuppies);
